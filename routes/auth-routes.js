@@ -3,12 +3,12 @@ const passport = require("passport");
 const passportSetup = require("../config/passport-setup");
 
 router.get("/login", (req, res) => {
-  res.render("login");
+  res.render("login", { user: req.user });
 });
 
 router.get("/logout", (req, res) => {
-  // Handle with Passport
-  res.send("Logging out");
+  req.logout();
+  res.redirect("/");
 });
 
 router.get(

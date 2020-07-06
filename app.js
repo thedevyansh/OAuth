@@ -32,7 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get("/", (req, res) => {
-  res.render("welcome");
+  res.render("welcome", { user: req.user });
 });
 
 app.use("/auth", require("./routes/auth-routes"));

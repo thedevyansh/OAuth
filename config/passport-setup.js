@@ -19,6 +19,7 @@ passport.use(
           new User({
             username: profile.displayName,
             googleId: profile.id,
+            thumbnail: profile._json.picture,
           })
             .save()
             .then((newUser) => {
@@ -36,7 +37,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  User.findById(id).then(user => {
+  User.findById(id).then((user) => {
     done(null, user);
   });
 });
